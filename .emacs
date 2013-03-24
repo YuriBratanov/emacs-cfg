@@ -50,3 +50,17 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
+;;; Ruby
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+
+;;; Kill Buffer without Confirmation
+(defun volatile-kill-buffer ()
+   "Kill current buffer unconditionally."
+   (interactive)
+   (let ((buffer-modified-p nil))
+     (kill-buffer (current-buffer))))
+
+(global-set-key (kbd "C-x k") 'volatile-kill-buffer)
+
+
