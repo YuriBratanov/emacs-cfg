@@ -21,7 +21,7 @@
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-gtk-ide)))
+     (color-theme-kingsajz)))
 
 ;;; Fullscreen on/off F11
 (defun toggle-fullscreen ()
