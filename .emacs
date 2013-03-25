@@ -18,10 +18,7 @@
 ;;; Load Color Theme
 (add-to-list 'load-path "/usr/share/emacs24/site-lisp/emacs-goodies-el/")
 (require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-kingsajz)))
+(require 'sd-theme)
 
 ;;; Fullscreen on/off F11
 (defun toggle-fullscreen ()
@@ -90,4 +87,3 @@
 
 (global-set-key [C-S-right] 'shift-right)
 (global-set-key [C-S-left] 'shift-left)
-
