@@ -4,6 +4,14 @@
 (require 'slime)
 (slime-setup)
 
+;;; Replace selection
+(delete-selection-mode 1)
+
+;;; No Word Wrap
+(setq-default truncate-lines t)
+(toggle-truncate-lines 1)
+(setq truncate-partial-width-windows nil)
+
 ;;; Load External ELs
 (add-to-list 'load-path "~/.emacs.d/external")
 
@@ -29,6 +37,16 @@
      nil 'fullscreen
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth))))
 (global-set-key [f11] 'toggle-fullscreen)
+
+;;; Maximize on/off F12
+(defun toggle-maximize (&optional f)
+  (interactive)
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+    '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+    '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+
+(global-set-key [f12] 'toggle-maximize)
 
 ;;; Save Workspace
 (load "revive") 
@@ -80,10 +98,11 @@
   (interactive)
   (shift-region -1))
 
-;; Bind (shift-right) and (shift-left) function to your favorite keys. I use
-;; the following so that Ctrl-Shift-Right Arrow moves selected text one 
-;; column to the right, Ctrl-Shift-Left Arrow moves selected text one
-;; column to the left:
-
 (global-set-key [C-S-right] 'shift-right)
 (global-set-key [C-S-left] 'shift-left)
+
+;;; Auto Complete
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(ac-config-default)
