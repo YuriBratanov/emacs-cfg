@@ -14,6 +14,7 @@
 
 ;;; Load External ELs
 (add-to-list 'load-path "~/.emacs.d/external")
+(require 'execute)
 
 (global-font-lock-mode t)
 (show-paren-mode 1)
