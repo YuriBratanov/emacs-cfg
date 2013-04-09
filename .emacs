@@ -81,7 +81,6 @@
 
 ;; Shift the selected region right if distance is postive, left if
 ;; negative
-
 (defun shift-region (distance)
   (let ((mark (mark)))
     (save-excursion
@@ -107,3 +106,10 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+
+;;; Buffer Move
+(require 'buffer-move)
+(global-set-key (kbd "C-c <up>")     'buf-move-up)
+(global-set-key (kbd "C-c <down>")   'buf-move-down)
+(global-set-key (kbd "C-c <left>")   'buf-move-left)
+(global-set-key (kbd "C-c <right>")  'buf-move-right)
