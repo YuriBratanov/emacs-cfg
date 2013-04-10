@@ -15,6 +15,10 @@
 (toggle-truncate-lines 1)
 (setq truncate-partial-width-windows nil)
 
+;;; Load External ELs
+(add-to-list 'load-path "~/.emacs.d/external")
+(require 'execute)
+
 (global-font-lock-mode t)
 (show-paren-mode 1)
 (add-hook 'lisp-mode-hook '(lambda ()
@@ -84,7 +88,6 @@
 
 ;; Shift the selected region right if distance is postive, left if
 ;; negative
-
 (defun shift-region (distance)
   (let ((mark (mark)))
     (save-excursion
@@ -121,3 +124,10 @@
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
 (global-auto-revert-mode 1)
+
+;;; Buffer Move
+(require 'buffer-move)
+(global-set-key (kbd "C-c <up>")     'buf-move-up)
+(global-set-key (kbd "C-c <down>")   'buf-move-down)
+(global-set-key (kbd "C-c <left>")   'buf-move-left)
+(global-set-key (kbd "C-c <right>")  'buf-move-right)
