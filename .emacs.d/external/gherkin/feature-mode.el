@@ -1,4 +1,4 @@
- 
+
 ;;; feature-mode.el --- Major mode for editing Gherkin (i.e. Cucumber) user stories
 ;;; Version: 0.4
 ;;; Author: Michael Klishin
@@ -84,7 +84,7 @@
 (eval-when-compile (require 'cl))
 (require 'thingatpt)
 
-(defcustom feature-cucumber-command "rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\""
+(defcustom feature-cucumber-command "bundle exec cucumber -c CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\""
   "set this variable to the command, which should be used to execute cucumber scenarios."
   :group 'feature-mode
   :type 'string)
@@ -475,8 +475,9 @@ are loaded on startup.  If nil, don't load snippets.")
          (file-and-line (car (split-string result "\n")))
          (matched? (string-match "^\\(.+\\):\\([0-9]+\\)$" file-and-line)))
     (if matched?
-        (let ((file    (format "%s/%s" root (match-string 1 file-and-line)))
+        (let ((file    (format "%s" (match-string 1 file-and-line)))
               (line-no (string-to-number (match-string 2 file-and-line))))
+          (other-window 1)
           (find-file file)
           (goto-char (point-min))
           (forward-line (1- line-no)))

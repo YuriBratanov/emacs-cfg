@@ -4,6 +4,9 @@
 (require 'slime)
 (slime-setup)
 
+;;; Load External ELs
+(add-to-list 'load-path "~/.emacs.d/external")
+
 ;;; Replace selection
 (delete-selection-mode 1)
 
@@ -12,9 +15,6 @@
 (toggle-truncate-lines 1)
 (setq truncate-partial-width-windows nil)
 
-;;; Load External ELs
-(add-to-list 'load-path "~/.emacs.d/external")
-
 (global-font-lock-mode t)
 (show-paren-mode 1)
 (add-hook 'lisp-mode-hook '(lambda ()
@@ -22,6 +22,10 @@
 
 ;;; Show Line Numbers
 (global-linum-mode t)
+
+(require 'exec-path-from-shell) ;; if not using the ELPA package
+(exec-path-from-shell-initialize)
+(exec-path-from-shell-copy-env "JRUBY_OPTS")
 
 ;;; Load Color Theme
 (add-to-list 'load-path "/usr/share/emacs24/site-lisp/emacs-goodies-el/")
@@ -49,7 +53,7 @@
 (global-set-key [f12] 'toggle-maximize)
 
 ;;; Save Workspace
-(load "revive") 
+(load "revive")
 (autoload 'save-current-configuration "revive" "Save status" t)
 (autoload 'resume "revive" "Resume Emacs" t)
 (autoload 'wipe "revive" "Wipe Emacs" t)
@@ -106,3 +110,14 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+
+;;; various
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq inhibit-startup-message t)
+(setq inhibit-start-screen t)
+(setq inhibit-splash-screen t)
+
+(setq make-backup-files nil)
+(show-paren-mode 1)
+(setq-default indent-tabs-mode nil)
+(global-auto-revert-mode 1)
