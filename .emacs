@@ -7,6 +7,10 @@
 ;;; Load External ELs
 (add-to-list 'load-path "~/.emacs.d/external")
 
+;;; Swap save and search functions
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-x C-s") 'isearch-forward)
+
 ;;; Replace selection
 (delete-selection-mode 1)
 
@@ -15,8 +19,7 @@
 (toggle-truncate-lines 1)
 (setq truncate-partial-width-windows nil)
 
-;;; Load External ELs
-(add-to-list 'load-path "~/.emacs.d/external")
+;;; Executing external programs
 (require 'execute)
 
 (global-font-lock-mode t)
@@ -131,3 +134,4 @@
 (global-set-key (kbd "C-c <down>")   'buf-move-down)
 (global-set-key (kbd "C-c <left>")   'buf-move-left)
 (global-set-key (kbd "C-c <right>")  'buf-move-right)
+
