@@ -7,6 +7,10 @@
 ;;; Load External ELs
 (add-to-list 'load-path "~/.emacs.d/external")
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 ;;; Swap save and search functions
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-x C-s") 'isearch-forward)
@@ -134,4 +138,3 @@
 (global-set-key (kbd "C-c <down>")   'buf-move-down)
 (global-set-key (kbd "C-c <left>")   'buf-move-left)
 (global-set-key (kbd "C-c <right>")  'buf-move-right)
-
