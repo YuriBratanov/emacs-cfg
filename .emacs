@@ -138,3 +138,29 @@
 (global-set-key (kbd "C-c <down>")   'buf-move-down)
 (global-set-key (kbd "C-c <left>")   'buf-move-left)
 (global-set-key (kbd "C-c <right>")  'buf-move-right)
+
+;;; Add Scala Support
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(unless (package-installed-p 'scala-mode2)
+  (package-refresh-contents) (package-install 'scala-mode2))
+
+(add-to-list 'load-path "/home/yuri/emacs-cfg/emacs.d/elpa/scala-mode2-20130403.1734/")
+(require 'scala-mode2)
+
+(add-hook 'scala-mode-hook '(lambda ()
+  (local-set-key (kbd "RET") 'newline-and-indent)
+  (local-set-key (kbd "C-M-j") 'join-line)
+  (local-set-key (kbd "<backtab>") 'scala-indent:indent-with-reluctant-strategy)
+))
+
+(add-hook 'scala-mode-hook '(lambda ()
+  (require 'whitespace)
+
+  (make-local-variable 'before-save-hook)
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+
+  (whitespace-mode)
+))
