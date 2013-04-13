@@ -3,7 +3,7 @@
 
 (custom-theme-set-faces
  'sd
- '(default ((t (:family "Droid Sans Mono" :foundry "unknown" :width normal :height 107 :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "black" :background "grey91" :stipple nil :inherit nil))))
+ '(default ((t (:family "Droid Sans Mono" :foundry "unknown" :width normal :height 107 :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "black" :background "grey95" :stipple nil :inherit nil))))
  '(cursor ((t (:background "grey15"))))
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((t (:family "Sans Serif"))))
