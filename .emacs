@@ -161,6 +161,4 @@
 
   (make-local-variable 'before-save-hook)
   (add-hook 'before-save-hook 'whitespace-cleanup)
-
-  (whitespace-mode)
 ))
