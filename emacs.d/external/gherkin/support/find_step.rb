@@ -68,13 +68,15 @@ input_text = ARGV[0].strip.gsub(/(When|Then|Given|And) */, "")
 
 files = Dir[Dir.pwd + "/features/**/*steps.rb"]
 
-steps = []
 files.each do |step_file|
-  steps.concat(StepParser.new(step_file).steps)
-end
-
-steps.each do |step|
-  if step.match?(input_text)
-    puts "#{step.file}:#{step.line}"
+  found = false
+  steps = StepParser.new(step_file).steps
+  steps.each do |step|
+    if step.match?(input_text)
+      found = true
+      puts "#{step.file}:#{step.line}"
+      break
+    end
   end
+  break if found
 end
