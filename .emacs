@@ -36,7 +36,7 @@
 
 (require 'exec-path-from-shell) ;; if not using the ELPA package
 (exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-env "JRUBY_OPTS")
+(exec-path-from-shell-copy-env "PATH")
 
 ;;; Load Color Theme
 (add-to-list 'load-path "/usr/share/emacs24/site-lisp/emacs-goodies-el/")
@@ -147,7 +147,7 @@
 (unless (package-installed-p 'scala-mode2)
   (package-refresh-contents) (package-install 'scala-mode2))
 
-(add-to-list 'load-path "/home/yuri/emacs-cfg/emacs.d/elpa/scala-mode2-20130403.1734/")
+(add-to-list 'load-path "$HOME/emacs-cfg/emacs.d/elpa/scala-mode2-20130403.1734/")
 (require 'scala-mode2)
 
 (add-hook 'scala-mode-hook '(lambda ()
