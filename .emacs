@@ -162,3 +162,7 @@
   (make-local-variable 'before-save-hook)
   (add-hook 'before-save-hook 'whitespace-cleanup)
 ))
+
+;;; Web Mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
