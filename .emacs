@@ -12,8 +12,8 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;;; Swap save and search functions
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "C-x C-s") 'isearch-forward)
+;(global-set-key (kbd "C-s") 'save-buffer)
+;(global-set-key (kbd "C-x C-s") 'isearch-forward)
 
 ;;; Replace selection
 (delete-selection-mode 1)
