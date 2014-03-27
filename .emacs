@@ -1,8 +1,8 @@
 ;;; Lisp (SLIME) interaction
-(setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")  ; your SLIME directory
-(require 'slime)
-(slime-setup)
+;(setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
+;(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")  ; your SLIME directory
+;(require 'slime)
+;(slime-setup)
 
 ;;; Load External ELs
 (add-to-list 'load-path "~/.emacs.d/external")
@@ -31,6 +31,10 @@
 (add-hook 'lisp-mode-hook '(lambda ()
 (local-set-key (kbd "RET") 'newline-and-indent)))
 
+;;;Fuzzy search
+(global-set-key (kbd "C-c p") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c g") 'helm-git-grep)
+
 ;;; Show Line Numbers
 (global-linum-mode t)
 
@@ -39,9 +43,9 @@
 (exec-path-from-shell-copy-env "PATH")
 
 ;;; Load Color Theme
-(add-to-list 'load-path "/usr/share/emacs24/site-lisp/emacs-goodies-el/")
 (require 'color-theme)
-(require 'sd-theme)
+(color-theme-initialize)
+(color-theme-gtk-ide)
 
 ;;; Fullscreen on/off F11
 (defun toggle-fullscreen ()
@@ -81,8 +85,8 @@
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;;; Ruby
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+;(require 'ruby-electric)
+;(add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
 ;;; Kill Buffer without Confirmation
 (defun volatile-kill-buffer ()
@@ -164,5 +168,5 @@
 ))
 
 ;;; Web Mode
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+;(require 'web-mode)
+;(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
