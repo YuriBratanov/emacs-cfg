@@ -38,6 +38,9 @@
 ;;; Show Line Numbers
 (global-linum-mode t)
 
+;;;scroll step
+(setq scroll-step 1)
+
 (require 'exec-path-from-shell) ;; if not using the ELPA package
 (exec-path-from-shell-initialize)
 (exec-path-from-shell-copy-env "PATH")
@@ -166,6 +169,8 @@
   (make-local-variable 'before-save-hook)
   (add-hook 'before-save-hook 'whitespace-cleanup)
 ))
+
+(setq js-indent-level 2)
 
 ;;; Web Mode
 ;(require 'web-mode)
